@@ -15,3 +15,4 @@
    2. create products array
    3. add product images
    4. render products
+6. Added React bootstrap

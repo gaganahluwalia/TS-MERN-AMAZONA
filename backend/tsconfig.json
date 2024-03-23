@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6", // Specify the ECMAScript version to target
+    "module": "commonjs", // Specify the module system to use (CommonJS for Node.js)
+    "outDir": "./build", // Specify the output directory for compiled files
+    "rootDir": "./src", // Specify the root directory of your source files
+    "strict": true, // Enable strict type-checking
+    "esModuleInterop": true, // Enable interoperability between CommonJS and ES modules
+    "resolveJsonModule": true, // Enable importing JSON files as modules
+    "declaration": true, // Generate declaration files (.d.ts) for your TypeScript code
+    "sourceMap": true // Generate source maps for easier debugging
+  },
+  "include": [
+    "src/**/*.ts" // Specify the files to include in compilation (all .ts files in the src directory and its subdirectories)
+  ],
+  "exclude": [
+    "node_modules" // Specify the directories to exclude from compilation (e.g., node_modules)
+  ]
+}

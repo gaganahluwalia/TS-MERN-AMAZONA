@@ -1,8 +1,20 @@
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap'
-import { sampleProducts } from './data'
-import { Outlet } from 'react-router-dom'
+import { Col, Container, Nav, NavDropdown, Navbar, Row } from 'react-bootstrap'
+import { Link, Outlet } from 'react-router-dom'
+import { Store } from './Store'
+import { useContext } from 'react'
 
 function App() {
+  const {
+    state: { userInfo },
+    dispatch,
+  } = useContext(Store)
+
+  const signoutHandler = () => {
+    dispatch({ type: 'LOGOUT' })
+    localStorage.removeItem('userInfo')
+    window.location.href = '/signin'
+  }
+
   return (
     <div className="d-flex flex-column vh-100">
       <header>
@@ -24,29 +36,29 @@ function App() {
               >
                 Cart
               </Nav.Link>
-              <Nav.Link
-                href="/signin"
-                className="nav-link"
-              >
-                Sign In
-              </Nav.Link>
+              {userInfo ? (
+                <NavDropdown
+                  title={userInfo.name}
+                  id="username"
+                >
+                  <Link
+                    onClick={signoutHandler}
+                    className="dropdown-item"
+                    to="#signout"
+                  >
+                    Sign Out
+                  </Link>
+                </NavDropdown>
+              ) : (
+                <Link
+                  to="/signin"
+                  className="nav-link"
+                >
+                  Sign In
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
-
-          {/* <Nav>
-            <a
-              href="/cart"
-              className="nav-link"
-            >
-              Cart
-            </a>
-            <a
-              href="/signin"
-              className="nav-link"
-            >
-              Sign In
-            </a>
-          </Nav> */}
         </Navbar>
       </header>
       <main>

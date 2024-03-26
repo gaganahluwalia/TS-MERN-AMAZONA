@@ -14,3 +14,12 @@
 .rating span {
   color: #ffc000;
 }
+
+img.large {
+  max-width: 100%;
+}
+
+.small-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
